@@ -60,8 +60,16 @@ nav .dropdown .btn {
 
 .form-check-input {
   background-image: none !important;
+  position: relative !important;
+  margin-top: 3.5% !important;
 }
 
+.radio-btn input {
+  display: inline-block !important;
+  width: 20px !important;
+  height: 20px !important;
+  background-color: pink;
+}
 .radio-btn .check-not-available {
   background-color: #d9d9d9;
 }
@@ -81,6 +89,11 @@ nav .dropdown .btn {
   font-size: 20px;
   font-weight: 700;
 }
+
+.dropdown,
+.dropdown .btn {
+  background: #ffffff;
+}
 .dropdown-toggle::after {
   display: none !important;
 }
@@ -92,6 +105,16 @@ nav .dropdown .btn {
   border-radius: 5px;
   border: #70c059 solid 2px;
   color: #70c059;
+}
+
+.dropdown-menu {
+  width: 100% !important;
+}
+
+.dropdown .btn:focus,
+.dropdown .btn:active {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 /* time-range */
@@ -107,6 +130,11 @@ nav .dropdown .btn {
   font-weight: 600;
   font-size: 16px;
   text-transform: capitalize;
+  text-decoration: none;
+}
+
+.time-range a:hover {
+  color: #70c059;
   text-decoration: none;
 }
 .time-date {
@@ -126,7 +154,7 @@ nav .dropdown .btn {
 .time-month {
   width: 90px;
   height: 31px;
-  background: linear-gradient(105.23deg, #70c059 0%, #72cac8 100%);
+  background: #ffffff;
   border: 2px solid #70c059;
 }
 
@@ -137,8 +165,10 @@ nav .dropdown .btn {
   border: 2px solid #70c059;
   border-radius: 0px 6px 6px 0px;
 }
+
 .time-month.active {
-  color: #ffffff;
+  background: linear-gradient(105.23deg, #70c059 0%, #72cac8 100%);
+  color: #ffffff !important;
 }
 
 /* CARD */
@@ -168,6 +198,7 @@ nav .dropdown .btn {
   width: 24px;
   height: 24px;
   border-radius: 50%;
+  margin-left: 10px;
 }
 
 .display-active {
