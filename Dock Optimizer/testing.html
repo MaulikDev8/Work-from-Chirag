@@ -19,102 +19,149 @@
   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script defer src="assets/JS/jq.js"></script>
 
+  <style>
+    .form-btn-close {
+      margin: 0;
+      border: 0;
+      padding: 0;
+      background: #0066ff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 150ms;
+    }
+
+    .form-btn-close .icon-cross {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: none;
+      position: relative;
+      width: 40px;
+      height: 40px;
+    }
+
+    .form-btn-close .icon-cross:before,
+    .form-btn-close .icon-cross:after {
+      content: "";
+      position: absolute;
+      top: 17px;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: #fff;
+      border-radius: 6px;
+    }
+
+    .form-btn-close .icon-cross:before {
+      transform: rotate(45deg);
+    }
+
+    .form-btn-close .icon-cross:after {
+      transform: rotate(-45deg);
+    }
+
+    .form-btn-close .icon-cross span {
+      display: block;
+    }
+
+    .form-btn-close:hover,
+    .form-btn-close:focus {
+      transform: rotateZ(90deg);
+      background: #0052cc;
+    }
+
+    .cross-stand-alone {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: none;
+      position: relative;
+      width: 40px;
+      height: 40px;
+    }
+
+    .cross-stand-alone:before,
+    .cross-stand-alone:after {
+      content: "";
+      position: absolute;
+      top: 18px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: #000;
+      border-radius: 4px;
+    }
+
+    .cross-stand-alone:before {
+      transform: rotate(45deg);
+    }
+
+    .cross-stand-alone:after {
+      transform: rotate(-45deg);
+    }
+
+    .cross-stand-alone span {
+      display: block;
+    }
+
+    .cross-1px {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: none;
+      position: relative;
+      width: 80px;
+      height: 80px;
+    }
+
+    .cross-1px:before,
+    .cross-1px:after {
+      content: "";
+      position: absolute;
+      top: 39.5px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #000;
+      border-radius: 1px;
+    }
+
+    .cross-1px:before {
+      transform: rotate(45deg);
+    }
+
+    .cross-1px:after {
+      transform: rotate(-45deg);
+    }
+
+    .cross-1px span {
+      display: block;
+    }
+
+    .visually-hidden-text {
+      position: absolute !important;
+      clip: rect(1px, 1px, 1px, 1px);
+      padding: 0 !important;
+      border: 0 !important;
+      height: 1px !important;
+      width: 1px !important;
+      overflow: hidden;
+    }
+  </style>
   <title>Dock Optimizer</title>
 </head>
 
 <body>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-a">
-    Launch demo modal a
+  <button type="button" class="form-btn-close">
+    <span class="icon-cross"></span>
+    <span class="visually-hidden-text">Close</span>
   </button>
-
-  <div class="modal fade" id="modal-a" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-b">
-            Launch another demo modal b
-          </button>
-          <p class="my-3">
-            Not good for fade In.
-          </p>
-          <p class="my-3">
-            who help to improve?
-          </p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="modal-b" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-c">
-            Launch another demo modal c
-          </button>
-          <p class="my-3">
-            But good enough for static modal
-          </p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="modal" id="modal-c" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p class="my-3">That's all.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    var modal_lv = 0;
-    $('.modal').on('shown.bs.modal', function (e) {
-      $('.modal-backdrop:last').css('zIndex', 1051 + modal_lv);
-      $(e.currentTarget).css('zIndex', 1052 + modal_lv);
-      modal_lv++
-    });
-
-    $('.modal').on('hidden.bs.modal', function (e) {
-      modal_lv--
-    });
-  </script>
 </body>
 
 </html>
