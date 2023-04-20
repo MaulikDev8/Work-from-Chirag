@@ -22,6 +22,23 @@ nav .dropdown .btn {
   /* margin-left: 150px; */
 }
 
+.nav-menu-title,
+.log-btn-text {
+  padding-right: 8px !important;
+}
+
+.dropdown .fas {
+  padding-right: 2px !important;
+}
+
+.dropdown-menu {
+  padding: 0 !important;
+}
+
+.dropdown-item:hover {
+  background-color: #b8d8b0 !important;
+}
+
 .log-btn {
   width: 147px;
   height: 48px;
@@ -83,6 +100,24 @@ nav .dropdown .btn {
   float: right !important;
 }
 
+.radio-btn-color-gray {
+  display: inline-block;
+  width: 20px;
+  height: 11px;
+  /* border-radius: 50%; */
+  background-color: #d9d9d9;
+  position: relative;
+}
+
+.radio-btn-color-green {
+  display: inline-block;
+  width: 20px;
+  height: 11px;
+  /* border-radius: 50%; */
+  background-color: #70c160;
+  position: relative;
+}
+
 /* Dock-titles */
 .dock-title .btn {
   border: none;
@@ -108,7 +143,8 @@ nav .dropdown .btn {
 }
 
 .dropdown-menu {
-  width: 100% !important;
+  min-width: 100% !important;
+  width: fit-content !important;
 }
 
 .dropdown .btn:focus,
@@ -166,8 +202,8 @@ nav .dropdown .btn {
   border-radius: 0px 6px 6px 0px;
 }
 
-.time-month.active {
-  background: linear-gradient(105.23deg, #70c059 0%, #72cac8 100%);
+.time-range .active {
+  background: linear-gradient(105.23deg, #70c059 0%, #72cac8 100%) !important;
   color: #ffffff !important;
 }
 
@@ -178,20 +214,25 @@ nav .dropdown .btn {
 .row > * {
   max-width: 200px !important;
 }
-.card {
+.cardDock {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
   align-items: center;
   border: #e2e5e8 solid 3px !important;
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 0 !important;
 }
-.card-title {
+.cardDock-title {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   font-size: 20px;
   font-weight: 700;
+  margin-bottom: 5px;
 }
 
 .round-display {
@@ -209,15 +250,16 @@ nav .dropdown .btn {
   background-color: #d9d9d9;
 }
 
-.card-img {
+.cardDock-img {
   max-width: 140px !important;
 }
 
-.card-img img {
+.cardDock-img img {
   width: 100%;
 }
 
-.card-decs p {
+.cardDock-decs p {
+  text-align: center;
   font-size: 20px;
   font-weight: 400;
 }
