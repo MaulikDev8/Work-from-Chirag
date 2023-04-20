@@ -323,3 +323,15 @@ nav .dropdown .btn {
     flex-direction: column;
   }
 }
+
+/* ======================================================================================
+========================== Modal ======================================== */
+.cardDock-img .first-modal .btn-primary {
+  /* background-color: #ffffff; */
+  /* border-color: #ffffff; */
+}
+
+.cardDock-img .first-modal .modal-header {
+  flex-direction: column !important;
+  align-items: center;
+}

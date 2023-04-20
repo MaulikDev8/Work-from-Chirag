@@ -18,13 +18,17 @@
     integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  <!-- JQ -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script defer src="assets/JS/jq.js"></script>
+
   <title>Dock Optimizer</title>
 </head>
 
 <body>
 
   <!-- =================== Header ======================== -->
-  <nav class="navbar navbar-expand-sm bg-body-tertiary">
+  <nav class="navbar navbar-expand-sm bg-body-tertiary dockOptimizer-nav">
     <div class="container">
 
       <div class="dropdown">
@@ -53,7 +57,7 @@
 
 
   <!-- =================== Hero =========================== -->
-  <div class="hero-main">
+  <div class="hero-main dockOptimizer-hero">
     <div class="container">
 
       <div class="hero-main-title">
@@ -107,7 +111,43 @@
               <div class="round-display display-inactive"></div>
             </div>
             <div class="cardDock-img">
-              <img src="assets/images/TRUCK_.png" alt="">
+              <!-- <img src="assets/images/TRUCK_.png" alt=""> -->
+
+              <!-- Image trigger modal -->
+              <img src="assets/images/TRUCK_.png" type="button" class="btn btn-primary" data-toggle="modal"
+                data-target="#demo-1">
+              </img>
+
+              <!-- Modal -->
+              <div class="modal first-modal fade" id="myModel1" tabindex="-1" role="dialog"
+                aria-labelledby="myModel1Title" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-footer">
+                      <button type="button" class="close close-custom-btn" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+
+                    </div>
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">DOCK door 3</h5>
+                      <p>Currently : available</p>
+                      <p>Move to In Use</p>
+                    </div>
+                    <div class="modal-body">
+
+                      <a type="button" class="btn btn-info" data-toggle="modal" data-target="#demo-2">Launch modal
+                        2</a>
+
+
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="cardDock-decs">
               <p>G1458</p>
@@ -128,151 +168,120 @@
             </div>
           </div>
         </div>
-        <div class="col-6">
-          <div class="cardDock ">
-            <div class="cardDock-title d-flex">
-              <h2 class="m-0 p-0">D1</h2>
-              <div class="round-display display-active"></div>
-            </div>
-            <div class="cardDock-img">
-              <img src="assets/images/TRUCK_.png" alt="">
-            </div>
-            <div class="cardDock-decs">
-              <p>G1458</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="cardDock ">
-            <div class="cardDock-title d-flex">
-              <h2 class="m-0 p-0">D1</h2>
-              <div class="round-display display-active"></div>
-            </div>
-            <div class="cardDock-img">
-              <img src="assets/images/TRUCK_.png" alt="">
-            </div>
-            <div class="cardDock-decs">
-              <p>G1458</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="cardDock ">
-            <div class="cardDock-title d-flex">
-              <h2 class="m-0 p-0">D1</h2>
-              <div class="round-display display-active"></div>
-            </div>
-            <div class="cardDock-img">
-              <img src="assets/images/TRUCK_.png" alt="">
-            </div>
-            <div class="cardDock-decs">
-              <p>G1458</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="cardDock ">
-            <div class="cardDock-title d-flex">
-              <h2 class="m-0 p-0">D1</h2>
-              <div class="round-display display-active"></div>
-            </div>
-            <div class="cardDock-img">
-              <img src="assets/images/TRUCK_.png" alt="">
-            </div>
-            <div class="cardDock-decs">
-              <p>G1458</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="cardDock ">
-            <div class="cardDock-title d-flex">
-              <h2 class="m-0 p-0">D1</h2>
-              <div class="round-display display-active"></div>
-            </div>
-            <div class="cardDock-img">
-              <img src="assets/images/TRUCK_.png" alt="">
-            </div>
-            <div class="cardDock-decs">
-              <p>G1458</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="cardDock ">
-            <div class="cardDock-title d-flex">
-              <h2 class="m-0 p-0">D1</h2>
-              <div class="round-display display-active"></div>
-            </div>
-            <div class="cardDock-img">
-              <img src="assets/images/TRUCK_.png" alt="">
-            </div>
-            <div class="cardDock-decs">
-              <p>G1458</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-6 opacity-is-half">
-          <div class="cardDock ">
-            <div class="cardDock-title d-flex">
-              <h2 class="m-0 p-0">D1</h2>
-              <div class="round-display display-inactive"></div>
-            </div>
-            <div class="cardDock-img">
-              <img src="assets/images/TRUCK_.png" alt="">
-            </div>
-            <div class="cardDock-decs">
-              <p>G1458</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-6 opacity-is-half">
-          <div class="cardDock ">
-            <div class="cardDock-title d-flex">
-              <h2 class="m-0 p-0">D1</h2>
-              <div class="round-display display-inactive"></div>
-            </div>
-            <div class="cardDock-img">
-              <img src="assets/images/TRUCK_.png" alt="">
-            </div>
-            <div class="cardDock-decs">
-              <p>G1458</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-6 opacity-is-half">
-          <div class="cardDock ">
-            <div class="cardDock-title d-flex">
-              <h2 class="m-0 p-0">D1</h2>
-              <div class="round-display display-inactive"></div>
-            </div>
-            <div class="cardDock-img">
-              <img src="assets/images/TRUCK_.png" alt="">
-            </div>
-            <div class="cardDock-decs">
-              <p>G1458</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-6 opacity-is-half">
-          <div class="cardDock ">
-            <div class="cardDock-title d-flex">
-              <h2 class="m-0 p-0">D1</h2>
-              <div class="round-display display-inactive"></div>
-            </div>
-            <div class="cardDock-img">
-              <img src="assets/images/TRUCK_.png" alt="">
-            </div>
-            <div class="cardDock-decs">
-              <p>G1458</p>
-            </div>
-          </div>
-        </div>
+
 
       </div>
     </div>
   </div>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demo-1">Launch Modal #1</button>
+  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#demo-2">Launch Modal #2</button>
+  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#demo-3">Launch Modal #3</button>
 
+  <!-- [ Modal #1 ] -->
+  <div class="modal fade" id="demo-1" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal"><i class="icon-xs-o-md"></i></button>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title caps"><strong>Demo Modal #1</strong></h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Input Placeholder..." />
+              <span class="input-group-btn"><button class="btn btn-default" type="button">Action</button></span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#demo-2"
+            data-dismiss="modal">Close current, Launch Modal #2</button>
+          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#demo-3"
+            data-dismiss="modal">Close current, Launch Modal #3</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- [ Modal #2 ] -->
+  <div class="modal fade" id="demo-2" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal"><i class="icon-xs-o-md"></i></button>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title caps"><strong>Demo Modal #2</strong></h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Input Placeholder..." />
+              <span class="input-group-btn"><button class="btn btn-default" type="button">Action</button></span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demo-1"
+            data-dismiss="modal">Close current, Launch Modal #1</button>
+          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#demo-3"
+            data-dismiss="modal">Close current, Launch Modal #3</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- [ Modal #3 ] -->
+  <div class="modal fade" id="demo-3" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal"><i class="icon-xs-o-md"></i></button>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title caps"><strong>Demo Modal #3</strong></h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Input Placeholder..." />
+              <span class="input-group-btn"><button class="btn btn-default" type="button">Action</button></span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#demo-1"
+            data-dismiss="modal">Close current, Launch Modal #1</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#demo-2"
+            data-dismiss="modal">Close current, Launch Modal #2</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <hr />
+  <h3 class="caps">Usage:</h3>
+  <pre class="prettyprint">&lt;!-- Button trigger modal --&gt;
+&lt;ANY data-toggle="modal" data-target="TARGET"&gt;...&lt;/ANY&gt;
+
+&lt;div class="modal fade" id="SELECTOR" tabindex="-1"&gt;
+  &lt;div class="modal-dialog"&gt;
+   &lt;div class="modal-content"&gt;
+    &lt;div class="modal-body"&gt; ... &lt;/div&gt;
+     &lt;div class="modal-footer"&gt;           &lt;!-- ↓ --&gt;  &lt;!--      ↓      --&gt;
+      &lt;ANY data-toggle="modal" data-target="TARGET-2" data-dismiss="modal"&gt;...&lt;/ANY&gt;
+     &lt;/div&gt;
+   &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+  </div> <!-- end .container -->
+
+  <!-- <hr /> --> -->
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
