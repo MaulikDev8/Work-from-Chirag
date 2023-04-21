@@ -169,6 +169,10 @@ header */
   color: #22201a;
   font-size: 20px;
   font-weight: 700;
+  text-transform: none;
+  width: fit-content;
+  height: fit-content;
+  line-height: inherit;
 }
 
 .dock-optimizer-container .dropdown .btn:focus,
