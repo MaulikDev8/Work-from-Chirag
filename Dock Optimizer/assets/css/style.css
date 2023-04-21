@@ -10,6 +10,8 @@ header */
   display: none !important;
 }
 
+.dock-optimizer-container .dropdown .btn:not(:disabled):not(.disabled).active,
+.dock-optimizer-container .dropdown .btn:not(:disabled):not(.disabled):active,
 .dock-optimizer-container nav .dropdown .btn {
   background: linear-gradient(95.25deg, #70c059 0%, #72cac8 99.46%);
   border-radius: 6px;
@@ -40,7 +42,10 @@ header */
   background-color: #b8d8b0 !important;
 }
 
-.log-btn {
+.dock-optimizer-container .log-btn:not(:disabled):not(.disabled).active,
+.dock-optimizer-container .log-btn:not(:disabled):not(.disabled):active,
+.dock-optimizer-container .log-btn {
+  box-shadow: none !important;
   width: 147px;
   height: 48px;
   background: linear-gradient(95.25deg, #70c059 0%, #72cac8 99.46%);
@@ -70,6 +75,7 @@ header */
 
 /* Radio btn */
 .radio-btn {
+  /* flex: 1 1 0px; */
   display: flex;
   color: #22201a;
   text-transform: uppercase;
@@ -121,7 +127,9 @@ header */
 }
 
 /* Dock-titles */
+
 .dock-title {
+  /* flex: 1 1 0px; */
 }
 .dock-title .btn {
   border: none;
@@ -155,6 +163,14 @@ header */
   width: fit-content !important;
 }
 
+.dockOptimizer-hero .dropdown .btn:not(:disabled):not(.disabled).active,
+.dockOptimizer-hero .dropdown .btn:not(:disabled):not(.disabled):active {
+  background: none !important;
+  color: #22201a;
+  font-size: 20px;
+  font-weight: 700;
+}
+
 .dock-optimizer-container .dropdown .btn:focus,
 .dock-optimizer-container .dropdown .btn:active {
   outline: none !important;
@@ -163,6 +179,7 @@ header */
 
 /* time-range */
 .time-range {
+  /* flex: 1 1 0px; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -312,7 +329,13 @@ header */
 }
 
 @media screen and (max-width: 565px) {
-  .nav-menu-title,
+  .dockOptimizer-nav .dropdown .nav-menu-title {
+    display: none !important;
+  }
+  .dock-optimizer-container .dropdown .dropdown-toggle,
+  .dock-optimizer-container .log-btn {
+    width: min-content !important;
+  }
   .log-btn-text {
     display: none !important;
   }
@@ -346,6 +369,11 @@ header */
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#demo-1 .close,
+#demo-2 .close {
+  opacity: 1;
 }
 
 #demo-1 .modal-body h4 {
@@ -414,136 +442,22 @@ header */
 /* =============================================================================
 CLOSE BUTTON
 */
-.form-btn-close {
-  margin: 0;
-  border: 0;
-  padding: 0;
-  background: #0066ff;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: all 150ms;
+
+.close-btn {
+  border: none !important;
+  outline: none !important;
+  background-color: #70c059 !important;
+  border-radius: 10px;
+  color: #ffffff !important;
+  margin: 0 0 0 auto !important;
+  font-size: 2rem !important;
+  padding: 0px 8px 5px 8px !important;
+  font-weight: 300 !important;
 }
 
-.form-btn-close .icon-cross {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  position: relative;
-  width: 40px;
-  height: 40px;
-}
-
-.form-btn-close .icon-cross:before,
-.form-btn-close .icon-cross:after {
-  content: '';
-  position: absolute;
-  top: 17px;
-  left: 0;
-  right: 0;
-  height: 6px;
-  background: #fff;
-  border-radius: 6px;
-}
-
-.form-btn-close .icon-cross:before {
-  transform: rotate(45deg);
-}
-
-.form-btn-close .icon-cross:after {
-  transform: rotate(-45deg);
-}
-
-.form-btn-close .icon-cross span {
-  display: block;
-}
-
-.form-btn-close:hover,
-.form-btn-close:focus {
-  transform: rotateZ(90deg);
-  background: #0052cc;
-}
-
-.cross-stand-alone {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  position: relative;
-  width: 40px;
-  height: 40px;
-}
-
-.cross-stand-alone:before,
-.cross-stand-alone:after {
-  content: '';
-  position: absolute;
-  top: 18px;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: #000;
-  border-radius: 4px;
-}
-
-.cross-stand-alone:before {
-  transform: rotate(45deg);
-}
-
-.cross-stand-alone:after {
-  transform: rotate(-45deg);
-}
-
-.cross-stand-alone span {
-  display: block;
-}
-
-.cross-1px {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  position: relative;
-  width: 80px;
-  height: 80px;
-}
-
-.cross-1px:before,
-.cross-1px:after {
-  content: '';
-  position: absolute;
-  top: 39.5px;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: #000;
-  border-radius: 1px;
-}
-
-.cross-1px:before {
-  transform: rotate(45deg);
-}
-
-.cross-1px:after {
-  transform: rotate(-45deg);
-}
-
-.cross-1px span {
-  display: block;
-}
-
-.visually-hidden-text {
-  position: absolute !important;
-  clip: rect(1px, 1px, 1px, 1px);
+.close-btn span {
+  margin: 0 !important;
   padding: 0 !important;
-  border: 0 !important;
-  height: 1px !important;
-  width: 1px !important;
-  overflow: hidden;
+  position: relative;
+  bottom: 1px;
 }
