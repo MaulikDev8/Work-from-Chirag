@@ -236,7 +236,7 @@ header */
 .hero-main .row {
   justify-content: center;
 }
-.row > * {
+.dockOptimizer-hero .row > * {
   max-width: 200px !important;
 }
 .cardDock {
@@ -306,7 +306,8 @@ header */
 }
 
 @media screen and (max-width: 772px) {
-  .hero-main-title {
+  .hero-main-title,
+  .live-view-titles {
     flex-direction: column;
   }
 
@@ -460,4 +461,137 @@ CLOSE BUTTON
   padding: 0 !important;
   position: relative;
   bottom: 1px;
+}
+
+/* =========================================================================================
+live-view-titles
+*/
+.live-view-titles {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* live-view-text */
+.live-view-text {
+  display: flex;
+}
+
+.live-view-text h2 {
+  font-weight: 400;
+  font-size: 20px;
+  color: #22201a;
+  padding-right: 10px;
+}
+
+.live-view-text .live-view-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #70c160;
+}
+
+/* date live view */
+.date-live-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.date-live-view .text {
+  margin: 0;
+  padding-right: 10px;
+  font-size: 20px;
+  line-height: 24px;
+  color: #22201a;
+}
+.prev-next-btn {
+  display: flex;
+}
+.prev-next-btn .previous {
+  display: inline-block;
+  background: #ffffff;
+  border: 2px solid #70c059;
+  border-radius: 6px 0px 0px 6px;
+  padding: 0.5rem;
+  color: #70c160;
+}
+.prev-next-btn .next {
+  display: inline-block;
+  background: #ffffff;
+  border: 2px solid #70c059;
+  border-radius: 0px 6px 6px 0px;
+  padding: 0.5rem;
+  color: #70c160;
+}
+
+/* ================================================================ */
+/* live-view-row */
+.live-view-row {
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: none !important;
+  padding: 10px;
+  border: 2px solid #dde4ee;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.live-view-row-left {
+  display: flex;
+  align-items: center;
+}
+
+.zone-name {
+  margin-top: 10px;
+  padding-right: 10px;
+}
+
+.use-or-not {
+  font-weight: 700;
+  font-size: 21px;
+}
+
+.use-or-not p {
+  margin-bottom: 0;
+}
+
+.in-use-time {
+  font-weight: 400;
+  font-size: 16px;
+}
+.live-view-row-left .zone-name p {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(95.25deg, #70c059 0%, #72cac8 99.46%);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.use-or-not {
+  display: flex;
+  flex-direction: column;
+}
+
+.in-use-time {
+  width: fit-content !important;
+}
+
+.truck-no p {
+  font-weight: 700;
+  font-size: 21px;
+  margin: 0;
+  background: #d9d9d9;
+  border-radius: 4px;
+  padding: 14px;
 }
