@@ -1,0 +1,134 @@
+﻿@model IEnumerable<Dockoptimizer.Data.DbModels.FacilityMaster>
+
+<style>
+
+    /* Important part */
+    .modal-dialog {
+        overflow-y: initial !important
+    }
+
+    .modal-body {
+        height: 60vh;
+        overflow-y: auto;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+
+    <div class="container-fluid">
+
+        <div class="panel-body">
+            <a id="Add" href="/FacilityMaster/AddFacility/?Id=0" class="btn btn-outline-primary"><i class="fas fa-plus-circle mr-1"></i>Add New</a>
+
+            <div class="table-responsive">
+
+                <table id="FacilityList" class="CounterList table table-responsive text-nowrap table-hover table-bordered " style="border:1px black solid;margin-top:2%;">
+
+                    <thead>
+                        <tr>
+                            <th style="width:2%;">ID</th>
+                            <th>Facility Name</th>
+                            <th>House No.</th>
+                            <th>Lendmark</th>
+                            <th>Pincode</th>
+                            <th>Country</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td> </td>
+                                <td valign="top" class="text-left">@item.FacilityName </td>
+                                <td valign="top" class="text-left">@item.Address1 </td>
+                                <td valign="top" class="text-left">@item.Address2 </td>
+                                <td valign="top" class="text-left">@item.Pincode </td>
+                                <td valign="top" class="text-left">@item.Country </td>
+                                <td>
+                                    @* <a href="/FacilityMaster/AddFacility/?Id=@item.Id">Edit</a>*@
+                                    <a id="Edit" class="btn btn-primary" href="/FacilityMaster/AddFacility/?Id=@item.Id"><i class="fas fa-edit"></i></a>
+                                    <a id="Edit1" onclick="GetFacilityName(@item.Id);AssignDoortoFacility(@item.Id);" class="btn btn-primary" data-toggle="modal" data-target="#MainDoorListModel" data-backdrop="false"><i class="fas fa-warehouse"></i></a>
+                                    @*<button type="button" title="This week" href="/FacilityMaster/AddFacility/?Id=@item.Id" aria-pressed="false" class="fc-today-button fc-button fc-button-primary">today</button></td>*@
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div>
+            <!-- Button trigger modal -->
+            <!-- Modal -->
+            <div class="modal fade" id="MainDoorListModel" tabindex="-1" role="dialog" aria-labelledby="lblFacilityName" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Facility Name : </h3> <h5 class="modal-title" id="lblFacilityName"></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="MainDoorModel">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" onclick="SaveAssignDoor()" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#FacilityList').DataTable(
+                {
+                    "responsive": true,
+                    "autoWidth": true,
+                    "info": false,
+                    columnDefs: [
+                        { "width": "4%", "targets": [0] },
+                        { "width": "20%", "targets": [1,2,3,4,5] }
+                    ]
+                });
+              
+        });
+
+
+        function AssignDoortoFacility(id) {
+            $.get('@Url.Action("_AssignDoortoFacility", "FacilityMaster")', { Id: id }, function (content) {
+                $("#MainDoorModel").html("");
+                $("#MainDoorModel").html(content);
+            });
+        }
+
+        function GetFacilityName(id) {
+            debugger;
+            $.ajax({
+                url: "/FacilityMaster/GetFacilityName",
+                type: "POST",
+                data: { Id: id },
+                success: function (response) {
+                    debugger;
+
+                    $('#lblFacilityName').text(response.data.facilityName);
+                },
+                error: function (request, status, error) {
+                    toastr.error('Error', request.responseJSON);
+                }
+
+            });
+
+        }
+
+
+    </script>
+}
+

@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.abbreviation {
+  width: 91px;
+  height: 90px;
+  margin-left: 2%;
+  border-radius: 100%;
+  background: #53e7a4;
+  padding: 25px;
+  margin-top: -5%;
+  font-size: 26px;
+  font-weight: 900;
+}
+
+.modal-close-btn {
+  border: none;
+  background: transparent;
+  font-size: xx-large;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  align-items: center;
+  justify-content: center;
+  /*background-color: #ADE5F9;*/
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Utilities */
+.card::after,
+.card img {
+  border-radius: 50%;
+}
+
+body,
+.card,
+.stats {
+  display: flex;
+}
+
+.card {
+  padding: 2.5rem 2rem;
+  border-radius: var(--bs-modal-border-radius);
+  background-color: rgba(255, 255, 255, 0.5);
+  max-width: 500px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+  margin: 1rem;
+  position: relative;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+.card::before,
+.card::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+}
+
+.card::before {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  top: -0.7rem;
+  left: -0.7rem;
+}
+
+.card::after {
+  height: 15rem;
+  width: 15rem;
+  background-color: #4172f5aa;
+  top: -8rem;
+  right: -8rem;
+  box-shadow: 2rem 6rem 0 -3rem #fff;
+}
+
+.card img {
+  width: 8rem;
+  min-width: 80px;
+  box-shadow: 0 0 0 5px #fff;
+}
+
+.infos {
+  margin-left: 1.5rem;
+}
+
+.name {
+  margin-bottom: 1rem;
+}
+
+.name h2 {
+  font-size: 1.3rem;
+}
+
+.name h4 {
+  font-size: 0.8rem;
+  color: #333;
+}
+
+.text {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.stats {
+  margin-bottom: 1rem;
+}
+
+.stats li {
+  min-width: 5rem;
+}
+
+.stats li h3 {
+  font-size: 0.99rem;
+}
+
+.stats li h4 {
+  font-size: 0.75rem;
+}
+
+@media screen and (max-width: 450px) {
+  .card {
+    display: block;
+  }
+
+  .infos {
+    margin-left: 0;
+    margin-top: 1.5rem;
+  }
+}
+
+/* CUSTOM CSS */
+#MainDoorListModel .panel-body {
+  background-color: #dadd98ab;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px,
+    rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+#MainDoorListModel .panel-body .btn-outline-primary {
+  border-color: #70c059;
+}
+
+#MainDoorListModel .panel-body .btn-outline-primary:hover,
+#MainDoorListModel .panel-body .btn-outline-primary:active {
+  background-color: #70c059 !important;
+  border-color: #70c059 !important;
+  color: #fff !important;
+}
+
+.panel-body .btn-outline-primary:focus {
+  box-shadow: 0 0 0 0.2rem #70c059;
+}
+
+.panel-body .table-responsive .table-bordered {
+  border: 1px #ced4da solid;
+  border-radius: 10px;
+}
+
+.panel-body .table-responsive .form-control {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: #90ee908c;
+}
+
+.panel-body .table-responsive .form-control:focus {
+  border-color: #70c059;
+  box-shadow: 0 0 0 0.2rem #bae2b0;
+}
+
+.panel-body .table-responsive tr .close-btn {
+  border: none;
+  display: grid;
+  justify-items: center;
+}
+
+.panel-body .table-responsive tr:hover {
+  background-color: rgb(237 240 165);
+}

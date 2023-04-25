@@ -1,0 +1,253 @@
+﻿@model Dockoptimizer.Data.ViewModels.DoorManagementModel
+
+@Html.HiddenFor(e => e.DoorId , new { @ID="DoorId"})
+@foreach (var item in Model.FacilityDoorList)
+{
+    if (item.IsBookd == false)
+    {
+        <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-6">
+            <div class="cardDock ">
+                <div class="cardDock-title d-flex">
+                    <h2 class="m-0 p-0" id="DoorName_@item.DoorId">@item.DoorName</h2>
+                    <div class="round-display display-inactive"></div>
+                </div>
+                <div class="cardDock-img">
+                    <img src="~/images/truck_.png" alt="" type="button" onclick="SetDoorId(@item.DoorId,'@item.DoorName')" class="btn" data-toggle="modal" data-target="#demo-1">
+                </div>
+
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-6 opacity-is-half">
+            <div class="cardDock ">
+                <div class="cardDock-title d-flex">
+                    <h2 class="m-0 p-0" id="DoorName_@item.DoorId">@item.DoorName</h2>
+                    <div class="round-display display-inactive"></div>
+                </div>
+                <div class="cardDock-img">
+                    <img src="~/images/truck_.png" alt="" type="button" onclick="SetDoorId(@item.DoorId,'@item.DoorName')" class="btn">
+                    <button type="button" class="btn" onclick="ConfirmOpenBookdDoor(@item.BookDoorId)" data-dismiss="modal">  Open Door  </button>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+
+<!-- ====================== CARD-MODAL =================== -->
+<!-- [ Modal #1 ] -->
+
+<div class="modal fade" id="demo-1" tabindex="-1">
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <h4 id="Model1_DoorName"></h4>
+                <p>Currently: Available</p>
+
+                <p>Move to IN Use?</p>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="button" class="btn" data-toggle="modal" data-target="#demo-2"
+                        data-dismiss="modal">
+                    YES
+                </button>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                    <span aria-hidden="true">Cancel</span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- [ Modal #1 ] -->
+<!-- [ Modal #2 ] -->
+
+<div class="modal fade" id="demo-2" tabindex="-1">
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
+                    <span  aria-hidden="true">&times;</span>
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <h4 id="Model2_DoorName">DoorName</h4>
+
+                <p>Currently: Available</p>
+
+                <div class="radio-btn">
+                    <div class="d-flex">
+                        <label class="custom-radio-btn me-md-4 me-2" for="rblEventDoor1">
+                            <span class="text-radio">Get Event</span>
+                            <input type="radio" checked="checked" name="rblEventDoor" id="rblEventDoor1">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="custom-radio-btn" for="rblEventDoor2">
+                            <span class="text-radio">
+                                Book Door
+                            </span>
+                            <input type="radio" name="rblEventDoor" id="rblEventDoor2">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <select id="drpEventType" onchange="GetAlreadyBookdEvent(this.value)">
+                    <option value="0"> Select Event Type</option>
+                    @foreach (var item in Model.UserEventType)
+                    {
+                        <option value="@item.EventTypeId">@item.EventTypeName</option>
+                    }
+                </select>
+
+                <select id="drpMainEvent">
+                    <option> Select Event</option>
+                </select>
+
+                @*<form>
+
+                <div class="form-group">
+
+                <label for="carrierName">Carrier Name</label>
+
+                <input type="text" class="form-control" id="InputCarrierName" placeholder="Élise Charles">
+
+                </div>
+
+                <div class="form-group">
+
+                <label for="MC">MC#</label>
+
+                <input type="text" class="form-control" id="InputMC" placeholder="James">
+
+                </div>
+
+                <div class="form-group">
+
+                <label for="truckNumber">Truck Number</label>
+
+                <input type="text" class="form-control" id="InputTruckNumber" placeholder="GJ 14 AC 1458">
+
+                </div>
+
+                <div class="form-group">
+
+                <label for="unknown">Unknown</label>
+
+                <input type="text" class="form-control" id="InputUnknown" placeholder="James">
+
+                </div>
+
+                <div class="form2-save-btn">
+
+                <button type="submit" class="btn" id="saveBtn">Save</button>
+
+                </div>
+
+                </form>*@
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn" data-toggle="modal" onclick="SaveBookDoorForEvent()" data-dismiss="modal">  BookDoor </button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">Cancel</span>  </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =============================== CARD-MODAL-FINISH ====================== -->
+
+<script>
+
+    function ConfirmOpenBookdDoor(id) {
+        $.confirm({
+            title: 'Confirm!',
+            content: 'Are You Sure',
+            buttons: {
+                confirm: function () {
+                    OpenBookdDoor(id);
+                }
+            }
+        });
+    }
+
+    function OpenBookdDoor(id) {
+        debugger;
+       var  FacilityId =  $('#DefaultFacility').val();
+      
+       var formdata = {
+            OpenBookdDoorId: id,
+        };
+
+        $.ajax({
+            url: "/DoorManagement/OpenBookDoor",
+            type: "POST",
+            data: formdata,
+            success: function (response) {
+                debugger;
+                if (response.errorCode == 0) {
+                    $.confirm({
+                        title: 'Success!',
+                        content: response.errorMessage,
+                        buttons: {
+                            confirm: function () {
+                                debugger;
+                                $("#DefaultFacility").val(FacilityId).trigger('change');
+                            }
+                        }
+                    });
+
+                }
+            },
+            error: function (request, status, error) {
+                //toastr.error('Error', request.responseJSON);
+                debugger;
+                $.confirm({
+                    title: 'Error!',
+                    content: request.responseJSON,
+                    buttons: {
+                        confirm: function () {
+                            return false;
+                        }
+                    }
+                });
+            }
+
+        });
+
+    }
+</script>

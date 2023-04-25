@@ -1,0 +1,181 @@
+﻿@model Dockoptimizer.Data.ViewModels.DoorManagementModel
+
+<link href="~/css/custom.css" rel="stylesheet" />
+
+<!-- =================== Hero =========================== -->
+<div class="hero-main">
+    <div class="container">
+
+        <div class="hero-main-title">
+            <div class="radio-btn">
+              
+                <div class="d-flex">
+                    <label class="custom-radio-btn me-md-4 me-2" for="flexRadioDefault1">
+                        <span class="text-radio">NOT AVAILABLE</span>
+                        <input type="radio" checked="checked" name="flexRadioDefault" id="flexRadioDefault1">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="custom-radio-btn" for="flexRadioDefault2">
+                        <span class="text-radio">
+                            AVAILABLE
+                        </span>
+                        <input type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="dock-title">
+                <div class="dropdown">
+                 
+                    <select asp-for="DefaultFacility" id="DefaultFacility" required onchange="GetDoorList(this.value)">
+                        @foreach (var item in Model.UserFacilityList)
+                        {
+                            @if (Model.DefaultFacility == item.FacilityId)
+                            {
+                                <option value="@item.FacilityId" selected>@item.FacilityName</option>
+                            }
+                            else
+                            {
+                                <option value="@item.FacilityId">@item.FacilityName</option>
+                            }
+                        }
+                    </select>
+                   
+                </div>
+            </div>
+
+            <div class="time-range">
+                <a href="#" class="time-date">Date</a>
+                <a href="#" class="time-week ">Week</a>
+                <a href="#" class="time-month active">Month</a>
+                <a href="#" class="time-year">Year</a>
+            </div>
+        </div>
+
+        <div class="row" id="DivDoorList">
+          
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        GetDoorList(@Model.DefaultFacility)
+    });
+
+    function GetDoorList(id) {
+        debugger;
+        $.get('@Url.Action("_DoorOnFacility", "DoorManagement")', { FacilityId: id }, function (content) {
+            debugger;
+            $("#DivDoorList").html("");
+            $("#DivDoorList").html(content);
+        });
+    }
+
+    function GetAlreadyBookdEvent(eventtypeid) {
+        
+        debugger;
+        if(eventtypeid == 0)
+        {
+            return false;
+        }
+        var date = new Date();
+        var tomorrow = new Date();
+        tomorrow.setDate(date.getDate() + 1);
+
+        $.ajax({
+            url: "/Calendar/ApplyFilterOnCalendarView",
+            data: { startdate: new Date().toDateString(), enddate: "", eventTypeId: eventtypeid.toString() },
+            success: function (result) {
+                debugger;
+                if (result.isSuccess) {
+                    $("#drpMainEvent").html("");
+                    var list = result.data;
+                    $('#drpMainEvent').append('<option value="0">Select Event</option>');
+                    for (var i = 0; i < list.length; i++) {
+                        var opt = new Option(list[i].title, list[i].id, "Select Event");
+                        $('#drpMainEvent').append(opt);
+
+                    }
+                } else {
+                    window.location.href = "/Account/Login";
+                }
+            },
+            error: function (error) {
+                $(".overlay").hide();
+                alert('failed');
+            }
+        })
+    }
+
+    function SetDoorId(id,DoorName) {
+        debugger;
+        $("#DoorId").val(id);
+        $("#Model2_DoorName").text(DoorName);
+        $("#Model1_DoorName").text(DoorName);
+    }
+
+    function SaveBookDoorForEvent() {
+        debugger;
+        var ErrorCnt = 0;
+        //$('.ValidationSpan').hide();
+
+        //if ($("#FacilityName").val() == "0" || $("#FacilityName").val() == "") {
+        //    ErrorCnt++;
+        //    $('#SpanFacilityName').show();
+        //}
+
+        if (ErrorCnt > 0) {
+            return false;
+        }
+        if (ErrorCnt == 0) {
+          var  FacilityId=  $('#DefaultFacility').val();
+            var finalformdata = {
+                FacilityId: FacilityId,
+               DoorId : $('#DoorId').val(),
+               EventId : $('#drpMainEvent').val(),
+               EventTypeId : $('#drpEventType').val(),
+            };
+
+            //  console.log(formData);
+            $.ajax({
+                url: "/DoorManagement/BookDoorForEvent",
+                type: "POST",
+                data: finalformdata,
+                success: function (response) {
+                    debugger;
+                    if (response.errorCode == 0) {
+                        //  alert(response.errorMessage);
+                        //  toastr.success('Success', response.errorMessage);
+                        $.confirm({
+                            title: 'Success!',
+                            content: response.errorMessage,
+                            buttons: {
+                                confirm: function () {
+                                    $("#DefaultFacility").val(FacilityId).trigger('change');
+                                }
+                            }
+                        });
+
+                    }
+                },
+                error: function (request, status, error) {
+                    //toastr.error('Error', request.responseJSON);
+                    debugger;
+                    $.confirm({
+                        title: 'Error!',
+                        content: request.responseJSON,
+                        buttons: {
+                            confirm: function () {
+                                return false;
+                            }
+                        }
+                    });
+                }
+
+            });
+        }
+    }
+</script>

@@ -1,0 +1,233 @@
+﻿@model Dockoptimizer.Data.ViewModels.FacilityMasterViewModel
+
+@{
+    @Html.HiddenFor(e => e.Id , new { @ID="FacilityId"})
+}
+
+
+<div class="panel-body">
+
+    <a id="Add" onclick="AddDoor()" class="btn btn-outline-primary"><i class="fas fa-plus-circle mr-1"></i>Add Door</a>
+
+    <div class="table-responsive">
+
+        <table id="DoorList" class="CounterList table table-responsive text-nowrap table-hover table-bordered " style="border:1px black solid;margin-top:2%;">
+
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Door Name</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.lstFacilityDoor.Count() != 0)
+                {
+                    @foreach (var item in Model.lstFacilityDoor)
+                    {
+                        <tr>
+                            <td>
+                              
+                            </td>
+                            <td>
+                                <input type="hidden" name="Id" value="@item.Id">
+                                <input type="hidden" name="DoorNumber" value="@item.DoorNumber">
+                                <input type="hidden" name="DoorImage" value="@item.DoorImage">
+                                <input type="hidden" name="CreatedOn" value="@item.CreatedOn">
+                                <input type="hidden" name="CreatedBy" value="@item.CreatedBy">
+                                <input type="hidden" name="DeletedOn" value="@item.DeletedOn">
+                                <input type="hidden" name="DeletedBy" value="@item.DeletedBy">
+                                <input type="hidden" name="IsDeleted" value="@item.IsDeleted">
+                                <input type="hidden" name="UpdatedOn" value="@item.UpdatedOn">
+                                <input type="hidden" name="UpdatedBy" value="@item.UpdatedBy">
+                                <input type="text" class="DoorName form-control form-control-lg" name="DoorName" value="@item.DoorName">
+                            </td>
+                            <td>
+                                <a id="Edit1" class="ibtnDel btn btn-md btn-danger"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
+                    }
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+
+    //$(document).ready(function () {
+    //    $('#DoorList').DataTable(
+    //        {
+    //            "responsive": true,
+    //            "autoWidth": true,
+    //            "info": false,
+    //            columnDefs: [
+    //                { "width": "4%", "targets": [0] },
+    //                { "width": "20%", "targets": [1, 2, 3, 4, 5] }
+    //                { "width": "20%", "targets": [2] }
+    //            ]
+    //        });
+       
+    //});
+
+    //$("#DoorList").on("click", ".ibtnDel", function (event) {
+    //    debugger;
+
+    //    $(this).closest("tr").remove();
+    //});
+
+
+    $("#DoorList").on("click", ".ibtnDel", function (event) {
+        debugger;
+        var old = $(this);
+
+        var TrTotalCount = $("#DoorList > tbody > tr").length
+
+        if (TrTotalCount == 1) {
+            $.alert({
+                title: 'Alert!',
+                content: 'At List 1 Door is required!',
+            });
+        }
+        else {
+            $.confirm({
+                title: 'Delete?',
+                content: 'Are You Sure Delete This Record',
+                buttons: {
+                    Sure: {
+                        btnClass: 'btn-red any-other-class',
+                        action: function () {
+                            old.closest('tr').remove();
+                        }
+                    },
+                    cancel: function () {
+                        return true;
+                    },
+                }
+            });
+        }
+    });
+
+    function AddDoor() {
+        var cols = "";
+
+        cols += '<tr>';
+        cols += '<td></td>';
+        cols += '<td>';
+        cols += ' <input type="hidden"  name="Id" value="0">';
+        cols += '<input type="hidden" name="DoorNumber" value="">';
+        cols += '<input type="hidden" name="DoorImage" value="">';
+        cols += '<input type="hidden" name="CreatedOn" value="">';
+        cols += '<input type="hidden" name="CreatedBy" value="0">';
+        cols += '<input type="hidden" name="DeletedOn" value="">';
+        cols += '<input type="hidden" name="DeletedBy" value="0">';
+        cols += '<input type="hidden" name="IsDeleted" value="0">';
+        cols += '<input type="hidden" name="UpdatedOn" value="">';
+        cols += '<input type="hidden" name="UpdatedBy" value="0">';
+        cols += ' <input type="text" name="DoorName" class="DoorName form-control form-control-lg" value="">';
+        cols += '</td>';
+        cols += '<td><a id="Edit1" class="ibtnDel btn btn-md btn-danger"><i class="fas fa-trash-alt"></i></a></td>';
+        cols += '</tr>';
+
+        $('#DoorList tr:last').after(cols);
+    }
+
+
+
+
+</script>
+
+<script>
+
+    function SaveAssignDoor() {
+        debugger;
+       
+        var ErrorCnt = 0;
+       
+
+        $("#DoorList input[name='DoorName']").map(function () {
+            if (!$(this).val()) {
+                ErrorCnt++
+            } 
+        });
+       
+
+        if (ErrorCnt > 0) {
+            $.alert({
+                title: 'Alert!',
+                content: 'Please Fill Empty Door Name',
+            });
+        }
+
+
+        if (ErrorCnt == 0) {
+            var formData = {
+                Id: $('#FacilityId').val()
+                , lstFacilityDoor: DoorListArray(),
+            };
+            $.ajax({
+                url: "/FacilityMaster/SaveAssignDoortoFacility",
+                type: "POST",
+                data: formData,
+                success: function (response) {
+                    debugger;
+                    if (response.data.errorCode == 0) {
+                        //alert(response.data.errorMessage);
+                        $.confirm({
+                            title: 'Success!',
+                            content: response.data.errorMessage,
+                            buttons: {
+                                confirm: function () {
+                                    //$("#MainDoorModel").html("");
+                                    //$("#MainDoorListModel").hide();
+                                    window.location.href = "/FacilityMaster/Index";
+                                }
+                            }
+                        });
+
+                        // window.location.href = "/FacilityMaster/Index";
+
+                    }
+                },
+                error: function (request, status, error) {
+                    $.alert({
+                        title: 'Error!',
+                        content: request.responseJSON,
+                    });
+                }
+
+            });
+        }
+    }
+    function DoorListArray() {
+        debugger;
+        var TableData = new Array();
+        var FacilityId = $('#FacilityId').val();
+
+        $('#DoorList tr').each(function (row, tr) {
+            TableData[row] = {
+                "Id": $(tr).find('td').find('input[name="Id"]').val()
+                ,"DoorName": $(tr).find('td').find('input[name="DoorName"]').val()
+                , "FacilityId": FacilityId
+                , "DoorNumber": $(tr).find('td').find('input[name="DoorNumber"]').val()
+                , "DoorImage": $(tr).find('td').find('input[name="DoorImage"]').val()
+                , "CreatedOn": $(tr).find('td').find('input[name="CreatedOn"]').val()
+                , "CreatedBy": $(tr).find('td').find('input[name="CreatedBy"]').val()
+                , "DeletedOn": $(tr).find('td').find('input[name="DeletedOn"]').val()
+                , "DeletedBy": $(tr).find('td').find('input[name="DeletedBy"]').val()
+                , "IsDeleted": $(tr).find('td').find('input[name="IsDeleted"]').val()
+                , "UpdatedOn": $(tr).find('td').find('input[name="UpdatedOn"]').val()
+                , "UpdatedBy": $(tr).find('td').find('input[name="UpdatedBy"]').val()
+            }
+        });
+        TableData.shift();  // first row will be empty - so remove
+        return TableData;
+
+    }
+
+</script>
+
+
+
+

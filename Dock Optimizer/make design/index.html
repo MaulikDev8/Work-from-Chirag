@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Index</title>
+  <link rel="stylesheet" href="assignDoor.css">
+
+  <link rel="stylesheet" href="profile.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+  <!-- font-awesome 5.15.4 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div class="container-fluid">
+
+    <div class="panel-body">
+      <a id="Add" href="/FacilityMaster/AddFacility/?Id=0" class="btn btn-outline-primary"><i
+          class="fas fa-plus-circle mr-1"></i>Add New</a>
+
+      <div class="table-responsive">
+
+        <table id="FacilityList" class="CounterList table table-responsive text-nowrap table-hover table-bordered "
+          style="border:1px black solid;margin-top:2%;">
+
+          <thead>
+            <tr>
+              <th style="width:2%;">ID</th>
+              <th>Facility Name</th>
+              <th>House No.</th>
+              <th>Lendmark</th>
+              <th>Pincode</th>
+              <th>Country</th>
+              <th>Action</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+              <td> </td>
+              <td valign="top" class="text-left">@item.FacilityName </td>
+              <td valign="top" class="text-left">@item.Address1 </td>
+              <td valign="top" class="text-left">@item.Address2 </td>
+              <td valign="top" class="text-left">@item.Pincode </td>
+              <td valign="top" class="text-left">@item.Country </td>
+              <td>
+                @* <a href="/FacilityMaster/AddFacility/?Id=@item.Id">Edit</a>*@
+                <a id="Edit" class="btn btn-primary" href="/FacilityMaster/AddFacility/?Id=@item.Id"><i
+                    class="fas fa-edit"></i></a>
+                <a id="Edit1" onclick="GetFacilityName(@item.Id);AssignDoortoFacility(@item.Id);"
+                  class="btn btn-primary" data-toggle="modal" data-target="#MainDoorListModel" data-backdrop="false"><i
+                    class="fas fa-warehouse"></i></a>
+                @*<button type="button" title="This week" href="/FacilityMaster/AddFacility/?Id=@item.Id"
+                  aria-pressed="false" class="fc-today-button fc-button fc-button-primary">today</button>
+              </td>*@
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <!-- Button trigger modal -->
+      <!-- Modal -->
+      <div class="modal fade" id="MainDoorListModel" tabindex="-1" role="dialog" aria-labelledby="lblFacilityName"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>Facility Name : </h3>
+              <h5 class="modal-title" id="lblFacilityName"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="MainDoorModel">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" onclick="SaveAssignDoor()" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

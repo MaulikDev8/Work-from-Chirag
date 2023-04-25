@@ -1,0 +1,45 @@
+.panel-body {
+  background-color: #dadd98ab;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px,
+    rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.panel-body .btn-outline-primary {
+  border-color: #70c059;
+}
+
+.panel-body .btn-outline-primary:hover,
+.panel-body .btn-outline-primary:active {
+  background-color: #70c059 !important;
+  border-color: #70c059 !important;
+  color: #fff !important;
+}
+
+.panel-body .btn-outline-primary:focus {
+  box-shadow: 0 0 0 0.2rem #70c059;
+}
+
+.panel-body .table-responsive .table-bordered {
+  border: 1px #ced4da solid;
+  border-radius: 10px;
+}
+
+.panel-body .table-responsive .form-control {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: #90ee908c;
+}
+
+.panel-body .table-responsive .form-control:focus {
+  border-color: #70c059;
+  box-shadow: 0 0 0 0.2rem #bae2b0;
+}
+
+.panel-body .table-responsive tr .close-btn {
+  border: none;
+  display: grid;
+  justify-items: center;
+}
+
+.panel-body .table-responsive tr:hover {
+  background-color: rgb(237 240 165);
+}
